@@ -1,0 +1,27 @@
+---
+name: Lint Code Base
+run-name: 'Lint Code Base on "${{ github.event.pull_request.title }}" by ${{ github.actor }}'
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  packages: read
+  pull-requests: write
+
+jobs:
+  biome:
+    name: runner / Biome
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shinnopo/reviewdog-action-biome@main
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          fail_on_error: true
