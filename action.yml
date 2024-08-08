@@ -1,4 +1,4 @@
-name: 'Run Biome with reviewdog'
+name: 'Run Biome with reviewdog Actions'
 description: '🐶 Run Biome with reviewdog on pull requests to improve code review experience.'
 author: 'mongolyy'
 inputs:
