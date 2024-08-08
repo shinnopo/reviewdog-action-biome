@@ -7,6 +7,7 @@ biome_check() {
     exit 1
   fi
 
+  set +e
   biome_version=$(biome --version)
   if awk -v ver="$biome_version" 'BEGIN { if (ver >= 1.8) exit 1; }'; then
     # The following processes will be removed when biome 2.0.0 is released
@@ -20,6 +21,7 @@ biome_check() {
       sed 's/ *$//' |
       awk 'BEGIN { RS=""; ORS="\n\n" } { if (index($0, "│") > 0) { print "  ```\n" $0 "\n  ```" } else { print $0 } }'
   fi
+  set -e
 }
 
 biome_ci() {
