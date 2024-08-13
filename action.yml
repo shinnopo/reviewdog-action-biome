@@ -5,7 +5,7 @@ inputs:
   github_token:
     description: 'GITHUB_TOKEN'
     required: true
-    default: '${{ secrets.TOKEN }}'
+    default: '${{ github.token }}'
   workdir:
     description: |
       Working directory relative to the root directory.
